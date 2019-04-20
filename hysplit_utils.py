@@ -318,11 +318,11 @@ def write_control_file(start_time, coords, hyfile_list, hours, vertical_type, in
     return os.path.join(tdumpdir, filename)
 
 
-def run_HYSPLIT():
+def run_HYSPLIT(log=None):
     """Run HYSPLIT. Make sure CONTROL file has already been written.
     returns True upon successful completion.
     raises CalledProcessError if not."""
-    check_call(config.HYSPLIT_call, shell=False, cwd=config.HYSPLIT_working_dir)
+    check_call(config.HYSPLIT_call, shell=False, stdout=log, cwd=config.HYSPLIT_working_dir)
     print("finished running HYSPLIT.")
     return True
 
